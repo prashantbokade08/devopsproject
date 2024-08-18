@@ -1,14 +1,34 @@
-version: 0.0
+version: 0.2
 os: linux
 files:
   - source: /
     destination: /var/www/html
 hooks:
+  beforeInstall:
+    - location: scripts/permissions.sh
+      timeout: 300
+      runas: root
   afterInstall:
-    - location: script/install_nginx.sh
+    - location: scripts/install_nginx.sh
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: script/start_nginx.sh
+    - location: scripts/start_nginx.sh
       timeout: 300
       runas: root
+
+
+# version: 0.0
+# os: linux
+# files:
+#   - source: /
+#     destination: /var/www/html
+# hooks:
+#   afterInstall:
+#     - location: script/install_nginx.sh
+#       timeout: 300
+#       runas: root
+#   ApplicationStart:
+#     - location: script/start_nginx.sh
+#       timeout: 300
+#       runas: root
