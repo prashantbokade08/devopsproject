@@ -5,15 +5,15 @@ files:
     destination: /var/www/html
 hooks:
   beforeInstall:
-    - location: scripts/permissions.sh
+    - location: script/permissions.sh
       timeout: 300
       runas: root
   afterInstall:
-    - location: scripts/install_nginx.sh
+    - location: script/install_nginx.sh
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: scripts/start_nginx.sh
+    - location: script/start_nginx.sh
       timeout: 300
       runas: root
 
